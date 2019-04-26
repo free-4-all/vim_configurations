@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource name="Bloomberg User Mappings" type="application/x-user-mapping-config+xml">
+    <users>
+    </users>
+    <feeds>
+
+        <feed isin_list="drw_isin_list" default_mic="ARCX" include_fields="PARSEKYABLE_DES_SOURCE;CFI_CODE;CRNCY;PX_DISP_FORMAT_MAX_NUM_DEC;TICKER" type="Equities">
+        <cfi_mapping field="SECURITY_TYP2">
+                <field value="Common Stock" cfi="EXXXXX"/>
+                <field value="Future"  cfi="FXXXXX"/>
+                <field value="Equity"  cfi="EXXXXX"/>
+                <field value="Preferred Stock"  cfi="EXXXXX"/>
+                <field value="Mutual Fund"  cfi="EXXXXX"/>
+                <field value="Fund"  cfi="EXXXXX"/>
+                <field value="Option"  cfi="OXXXXX"/>
+            </cfi_mapping>
+            <csv_parser field="1" usage="isin"/>
+            <order_book_id_mapping field="TICKER"/>
+        </feed>
+    </feeds>
+
+
+</resource>
+

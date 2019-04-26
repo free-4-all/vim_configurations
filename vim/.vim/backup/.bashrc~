@@ -1,0 +1,107 @@
+# Add tbricks bin directory and admin_tools bin directory to PATH
+PATH=$PATH:/opt/tbricks/admin/bin
+
+# Add tbricks sdk bin directory to PATH
+PATH=$PATH:/opt/tbricks/sdk/bin
+
+# Add llvm bin directory to PATH to include clang++ program
+PATH=$PATH:/opt/llvm-3.7.0/bin
+
+export PATH
+
+# Add manual pages of Tbricks tbricks system
+MANPATH=$MANPATH:/opt/tbricks/admin/doc/man
+export MANPATH
+
+# Remove limitation for core dump size
+ulimit -S -c unlimited > /dev/null 2>&1
+# ulimit -S -n 1024 > /dev/null 2>&1
+
+# Set limit of virtual memory usage for applications started from BASH (3GB)
+# ulimit -Sv 3145728 > /dev/null 2>&1
+
+# Which Admin Center to connect to if multiple are found using zeroconf
+TBRICKS_ADMIN_CENTER=tbricks28_admin_sys
+export TBRICKS_ADMIN_CENTER
+
+# Path for init files
+export TBRICKS_ETC=/etc/tbricks
+
+export TB_APPS=/opt/tbricks/as
+#export SDK=/opt/tbricks/sdk/285
+	export SDK=/opt/tbricks/sdk
+	export SYSTEM=free210
+	#export SYSTEM=cmstr_285
+
+
+	# Which pager should be used by default
+	export PAGER=less
+	# don't calculate lines in file
+	export LESS="-n"
+
+	HISTTIMEFORMAT="%h/%d - %T (%Z %z): " 
+	export HISTTIMEFORMAT
+
+	HISTSIZE=10000
+	export HISTSIZE
+
+	export EDITOR=vim
+
+	PS1='[\D{%d/%m} \t] \u@\h \w \$ '
+	export PS1
+
+	# Aliases
+	alias rmdir="echo \"This command is disabled to prevent accidental use. Please use it with care. Tbricks.\""
+	alias zfs="echo \"This command is disabled to prevent accidental use. Please use it with care. Tbricks.\""
+	alias svcadm="echo \"This command is disabled to prevent accidental use. Please use it with care. Tbricks.\""
+	alias svccfg="echo \"This command is disabled to prevent accidental use. Please use it with care. Tbricks.\""
+	alias pstack="echo \"Please use 'tbstack' instead of pstack. Using pstack can lead to freezing of the process.\""
+	#tbricks hacks
+	alias edit="tbresource edit" 
+	alias stop="tbcomponent stop"
+	alias bstop="tbcomponent stop bpipe284"
+	alias bstart="tbcomponent start bpipe284"
+	alias start="tbcomponent start"
+	alias restart="tbcomponent restart"
+	alias get="tbcomponent get"
+	alias isin="tbresource set type="isin_list" bpipe_isin_list" 
+	alias cdl="cd ~/logs/"
+	alias cdc="cd ~/configs/"
+	alias rcload="source ~/.bashrc"
+	alias rcedit="vi ~/.bashrc"
+	alias tbcfgexport="tbresource export"
+	alias tbcfgimport="tbresource import"
+	alias daylogs="tblog $0 -k leve le dump -w"
+	alias livelogs="tblog $0 -k level le dump -W"
+	alias fixlogs="tblog $0 -k level le dump -k fix" 
+	alias logstuff=tbricks_logging
+	alias app_install="gmake INSTALL system="
+	alias check_disk_usage="du -hc --max-depth=1 | sort -h"
+	alias cdev="cd /home/freeland/workspaces/c++"
+	alias cda="cd $TB_APPS/"
+	alias cdfree="cd $TB_APPS/beta/accessory/free_example"
+	alias gmakenick="~/gmakenick"
+	#
+
+	# Enable bash completion for admin tools
+	if [ -f ~/admin/etc/bash/.tbricks_completion.bash ]; then 
+		source ~/admin/etc/bash/.tbricks_completion.bash 
+	fi
+	#
+
+	#functions
+	#tbricks_logging() {
+	#	#live streaming logs
+	#	if [$2 == "live"]
+	#	then 
+	#		tblog "$1" -k level le dump -W
+	#	elif [$2 == "day"]
+	#	then
+	#		tblog "$1" -k level le dump -w
+	#	elif [$2 == "fix"]
+	#	then 
+	#		tblog "$1" -k level le dump -k fix
+	#	else 
+	#		echo Please use 'live', 'day' or 'fix' as your second parameter, yo!
+	#	fi
+#}

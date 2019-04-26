@@ -1,0 +1,283 @@
+version 7.0 +autocmd +builtin_terms +cindent +digraphs -emacs_tags -farsi -GUI +insert_expand -langmap +lispindent -perl -python -rightleft +smartindent +terminfo +viminfo +writebackup +X11 +xterm_save
+
+set makeprg=tbmake\ -s\ -j\ RECURSIVE=NO
+
+if has("terminfo")
+let &t_Co=8
+let &t_Sf="\e[3%p1%dm"
+let &t_Sb="\e[4%p1%dm"
+else
+let &t_Co=8
+let &t_Sf="\e[3%dm"
+let &t_Sb="\e[4%dm"
+endif
+
+syntax on
+
+autocmd BufEnter * set formatoptions=tcql nocindent comments&
+autocmd BufEnter .*rc set ft=rc cindent smartindent
+autocmd BufEnter .vimrc set ft=vim cindent smartindent
+autocmd BufEnter *.c,*.C set ft=c cindent smartindent
+autocmd BufEnter *.cc,*.cxx,*.cpp set ft=cpp cindent smartindent
+autocmd BufEnter *.lex,*.l set ft=lex cindent smartindent
+autocmd BufEnter *.yacc,*.y set ft=yacc cindent smartindent
+autocmd BufEnter *.html,*.m,*.c,*.cc,*.H,*.java,*.v,*.y,*.l,*.lex set comments=sr:/*,mb:*,el:*/,://
+autocmd BufEnter *.html,*.m,*.c,*.cc,*.h,*.java,*.v,*.y,*.l,*.lex set cinoptions=>4,p4,t0,+4,{0,}0,:2,=2,e0,^0,(0,)20,*30
+autocmd BufEnter *.html,*.m,*.c,*.cc,*.h,*.java,*.v,*.y,*.l,*.lex set ai
+autocmd BufRead,BufNewFile,BufEnter *.m set ft=objc cindent smartindent
+autocmd BufRead,BufNewFile,BufEnter Makefile,makefile,*.make,*.makefile set ft=make noexpandtab cindent
+
+" <Tab> - Keyword completion
+
+autocmd BufEnter *.m,*.c,*.cc,*.h,*.y,*.l,*.lex ia if_ if( ) {}?if?e+2
+autocmd BufEnter *.m,*.c,*.cc,*.h,*.y,*.l,*.lex ia wh_ while( ) {}?while?e+2
+"autocmd BufEnter *.m,*.c,*.cc,*.h,*.y,*.l,*.lex ia do_ do {}while( )h
+autocmd BufEnter *.m,*.c,*.cc,*.h,*.y,*.l,*.lex ia for_ for(;;) {}?for?e+2
+autocmd BufEnter *.m,*.c,*.cc,*.h,*.y,*.l,*.lex ia sw_ switch( ) { case @:break; default:break; }?switch?e+2
+autocmd BufEnter *.m,*.c,*.cc,*.y,*.l,*.lex ia pb_ printf("%s:%d : %g\n", __FILE__, __LINE__,);ODOD
+
+"set noswapfile 
+"set nobackup 
+
+set backup
+set backupdir=~/.vim/backup
+
+set nowritebackup 
+set nofsync 
+
+"set nowrap
+set hls
+set nocompatible
+"set nobackup
+set ai
+set expandtab
+set backspace=2
+set noequalalways
+set equalprg=
+"set errorformat=%f:%l:\ %m,\"%f\"\\,%*[^0-9]%l:\ %m
+set gdefault
+set hidden
+set history=500
+set incsearch
+set isfname=@,48-57,/,.,-,_,+,,,$,:,~,{,}
+"set isprint=@,128-255
+set noignorecase
+set laststatus=2
+set scrolljump=0
+set shelltype=4
+set shiftround
+set shiftwidth=4
+set shortmess=mrntl
+"set showmatch
+set sidescroll=1
+set nosmarttab
+set splitbelow
+set nostartofline
+set tabstop=4
+"set textwidth=0
+set viminfo='20,\"50	" read/write a .viminfo file, don't store more
+			" than 50 lines of registers
+set whichwrap=<,>,[,]
+"set wrapmargin=0
+
+" For fast term !!!
+set ruler
+set showcmd
+set ttyfast
+"set maxmem=1000000
+"set maxmemtot=10000000
+
+:if &term == "xterm-color"
+:	set <Delete>=[3~
+:	set t_kb=
+:else
+:if &term == "vt220"
+:	set <Delete>=[3~
+:	set t_kb=
+:else
+:if &term == "ansi"
+:	set <Delete>=
+:	set t_kb=
+:else
+:if &term == "cygwin"
+:	set <Delete>=[3~
+:	set t_kb=
+:else
+:	set <Delete>=[3~
+:	set t_kb=
+:	fixdel
+:endif
+:endif
+:endif
+:endif
+
+map <F1> :e %<.h <CR>
+map <F2> :e %<.cpp <CR>
+" Tab
+map <Tab> :b#<CR>
+" Control-Up
+map Oa <C-Up>
+map! Oa <C-Up>
+" Control-Down
+map Ob <C-Down>
+map! Ob <C-Down>
+" Control-Right
+map Oc <C-Right>
+map! Oc <C-Right>
+" Control-Left
+map Od <C-Left>
+map! Od <C-Left>
+
+" Alt-Up
+map [A <M-Up>
+map! [A <M-Up>
+" Alt-Down
+map [B <M-Down>
+map! [B <M-Down>
+" Alt-Right
+map [C <M-Right>
+map! [C <M-Right>
+" Alt-Left
+map [D <M-Left>
+map! [D <M-Left>
+
+" Shift-Up
+map „ <S-Up>
+map! „ <S-Up>
+map [31~ <S-Up>
+map! [31~ <S-Up>
+" Shift-Down
+map … <S-Down>
+map! … <S-Down>
+map [32~ <S-Down>
+map! [32~ <S-Down>
+" Shift-Left
+map † <S-Left>
+map! † <S-Left>
+map [33~ <S-Left>
+map! [33~ <S-Left>
+" Shift-Right
+map ‡ <S-Right>
+map! ‡ <S-Right>
+map [34~ <S-Right>
+map! [34~ <S-Right>
+
+" Insert
+map [2~ <Insert>
+map! [2~ <Insert>
+" PgUp
+map [5~ <PageUp>
+map! [5~ <PageUp>
+" PgDn
+map [6~ <PageDown>
+map! [6~ <PageDown>
+" Home
+"map [1~ <Home>
+map [1~ <Home>
+map! [1~ <Home>
+" End
+"map [4~ <End>
+map [4~ <End>
+map! [4~ <End>
+" R11
+map [G 0
+imap [G 0
+map Ou 0
+imap Ou 0
+" F3 decrease current window width by N. (CTRL-W <) 
+map <F3> >
+imap <F3> >
+" F4 increase current window width by N. (CTRL-W >) 
+map <F4> <
+imap <F4> <
+" F5 grep the keyword after or under the cursor 
+map <F5> eb"zye:sp ~/vimgrep<CR><C-W>_:set tw=0<CR>"zp:r! grep -n <cword> #:p:h/*
+" map <F5> eb"zye:sp ~/vimgrep<CR><C-W>_:set tw=0<CR>:%d<CR>i:r! grep -n <ESC>"zpA *<ESC>^y$@"
+" F6 grep the keyword after or under the cursor in *.[ch]
+map <F6> eb"zye:sp ~/vimgrep<CR><C-W>_:set tw=0<CR>"zp:r! grep -n <cword> #:p:h/*.[ch]<CR>
+" map <F6> eb"zye:sp ~/vimgrep<CR><C-W>_:set tw=0<CR>:%d<CR>i:r! grep -n <ESC>"zpA *.[ch]<ESC>yy@"2G^
+" F7 list functions from current file
+map <F7> :!ctags -xi=fS % | awk '{printf"\%5d : \%s\n" , $3 , $1 }'| less
+" F8 emacs-like file select
+map <F8> :sp ~/fileselect<CR><C-W>_:set tw=0<CR>:%d<CR>i:r! ls -lF <ESC>:r! pwd<CR>kJA/<CR><ESC>;_lsexec0
+" F9 Shift end of line comment (C or C++ form) one tab stop right
+"map <F9> :.s$ *\(//\\|/\*\)$<Tab>\1$<CR>
+" F10 Shift end of line comment (C or C++ form) one tab stop left
+"map <F10> :.s$[ <Tab>]\(//\\|/\*\)$\1$<CR>
+
+
+" Shift-F1 grep the keyword after or under the cursor 
+map [23~ eb"zye:sp ~/vimgrep<CR><C-W>_:set tw=0<CR>"zp:r! grep -n <cword> `find #:p:h -type f -name '*' -print`
+map ’ eb"zye:sp ~/vimgrep<CR><C-W>_:set tw=0<CR>"zp:r! grep -n <cword> `find #:p:h -type f -name '*' -print`
+" Shift-F2 invert paste mode: insert literally
+map [24~ :set invpaste
+imap [24~ :set invpaste
+map “ :set invpaste
+imap “ :set invpaste
+
+" Shift-F5 grep the keyword after or under the cursor 
+map [28~ eb"zye:sp ~/vimgrep<CR><C-W>_:set tw=0<CR>"zp:r! grep -n <cword> #:p:h/*
+map – eb"zye:sp ~/vimgrep<CR><C-W>_:set tw=0<CR>"zp:r! grep -n <cword> #:p:h/*
+" Shift-F6 grep the keyword after or under the cursor in *.[ch]
+map [29~ eb"zye:sp ~/vimgrep<CR><C-W>_:set tw=0<CR>"zp:r! grep -n <cword> #:p:h/*.[ch]<CR>
+map — eb"zye:sp ~/vimgrep<CR><C-W>_:set tw=0<CR>"zp:r! grep -n <cword> #:p:h/*.[ch]<CR>
+" Shift-F7 Display the next error.
+map [31~ :cn
+map ˜ :cn
+" Shift-F8 List all errors that inlcude a file name.
+map [32~ :cl
+map ™ :cl
+" Shift-F9
+map š :%! indent -st
+
+" 'Control-\' to toggle commenting on a line:
+map  :s@[^ 	].*$@/* & */@<CR>
+" 'Control-\' comment block from Visual mode
+vmap  `>a*/`<i/**
+" '\\' uncomment block /** ... */
+map \\ [/v]/v`>XXx`<xxx
+
+"abbr dater <CR><Esc>:.!date +\%D<CR>kJA
+abbr dater <CR><Esc>:.!date <CR>kJA
+
+" emacs-like file select (F8)!
+map <C-V>__lsexec0 :2,$d<CR>yy@"3G$T 
+au! BufLeave fileselect nunmap <CR>
+au  BufLeave fileselect nunmap    O
+au  BufLeave fileselect nunmap    E
+au  BufLeave fileselect nunmap    F
+au  BufLeave fileselect nunmap    H
+au  BufLeave fileselect nunmap    U
+au  BufLeave fileselect nunmap    Q
+au  BufLeave fileselect nunmap    __H0
+au  BufLeave fileselect nunmap    __H1
+au! BufEnter fileselect nnoremap <CR> $T y$1G$pF d^i:e <ESC>:set nomodified<CR>yy@":bd! fileselect<CR><C-W>=
+au  BufEnter fileselect nnoremap O $T y$1GO<ESC>pj$F y$k^PI:new <ESC>dd@"
+au  BufEnter fileselect nmap    E $T y$1G$p<C-V>__lsexec0
+au  BufEnter fileselect nmap    F <C-V>__lsexec0
+au  BufEnter fileselect nmap    H __H0
+au  BufEnter fileselect nmap    U 1G$T/d$<C-V>__lsexec0
+au  BufEnter fileselect nmap    Q :q!<CR>
+au BufEnter fileselect nmap __H0 :0s/-lF/-alF/<CR><C-V>__lsexec0:nmap H __H1<CR>
+au BufEnter fileselect nmap __H1 :0s/-alF/-lF/<CR><C-V>__lsexec0:nmap H __H0<CR>
+
+" emacs-like incrementeal search
+nmap __nomagic :.g/\(\[$^\\/?]\)/s//\\\1/g<CR>
+nmap __magic   :.g/\([[$^.*~\\/?]\)/s//\\\1/g<CR>
+nmap __search  __magic
+nmap __quote   :1new<CR>P__search0y$:bd!<CR>
+nmap <C-S> __1CSS__1CRR__doS/
+nmap <C-Q> __1CSS__1CRR__doR?
+cmap <C-X> .<CR>//e<CR>ye??<CR>__cont<C-P><C-P><C-P><C-P><C-H><C-R>"
+cmap <C-Z> .<CR>//e<CR>ye__quote??<CR>__cont<C-P><C-P><C-P><C-P><C-P><C-H><C-R>"
+nnor __doS  :nmap __cont ?\(.\)<C-V><CR>__2CSS__2CRR/<CR>
+nnor __doR  :nmap __cont /\(.\)<C-V><CR>__2CSS__2CRR?<CR>
+nnor __1CSS :cmap <C-V><C-S> <C-V><C-C>__2CSS__2CRR/<C-V><C-P><CR>
+nnor __1CRR :cmap <C-V><C-Q> <C-V><C-C>__2CSS__2CRR?<C-V><C-P><CR>
+nnor __2CSS :cmap <C-V><C-S> <C-V><CR>__doS/<C-V><C-P><CR>
+nnor __2CRR :cmap <C-V><C-Q> <C-V><CR>__doR?<C-V><C-P><CR>
+
+au! BufLeave vimgrep nunmap    <CR>
+au  BufLeave vimgrep nunmap    Q
+au! BufEnter vimgrep nnoremap  <CR> I <ESC>df:i+<ESC>;PD^i:e <ESC>:set nomodified<CR>yy@":bd! vimgrep<CR><C-W>=zz
+au  BufEnter vimgrep nmap      Q :q!<CR>

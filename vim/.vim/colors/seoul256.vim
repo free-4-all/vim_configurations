@@ -1,0 +1,1 @@
+/opt/tbricks/repos/seoul256.vim/colors/seoul256.vim

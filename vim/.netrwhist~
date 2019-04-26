@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/tbricks/tmp/straight_from_gelber/volatility'
+let g:netrw_dirhist_2='/home/tbricks/repos/apps28/shared/volatility'
+let g:netrw_dirhist_3='/home/tbricks/repos/apps-stash/production/accessory/price_chart'
+let g:netrw_dirhist_4='/home/tbricks/repos/apps-stash/production/limit/short_sell'
+let g:netrw_dirhist_5='/home/tbricks/repos/tb/tb/src/utilities/tbmcast'
+let g:netrw_dirhist_6='/home/tbricks/repos/tb/tb/src/utilities/test_mcast'
+let g:netrw_dirhist_7='/tmp/Hartree/socket_spread_creator'
+let g:netrw_dirhist_8='/home/tbricks/repos/apps-stash/beta/calculation/proxy_pricing_mdp'

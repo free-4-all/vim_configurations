@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/tbricks/repos/apps-stash/examples/strategy/vol_order/vol_order.metadata'
+let g:netrw_dirhist_2='/home/tbricks/repos/apps-stash/production/limit/fx_adjusted_cash_value'
+let g:netrw_dirhist_3='/home/tbricks/.vim/plugged/coc.nvim/doc'
