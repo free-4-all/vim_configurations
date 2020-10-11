@@ -56,13 +56,10 @@ call plug#begin('~/.vim/plugged')
 " list of plugins to install
 Plug 'tpope/vim-sensible'
 Plug 'junegunn/seoul256.vim'
-Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+Plug 'neoclide/coc.nvim', {'branch':'release'}
 
 " end of plugins list
 call plug#end()
-
-
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""
